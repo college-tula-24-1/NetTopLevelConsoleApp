@@ -12,7 +12,23 @@ ArrayRandomInit(array);
 ArrayPrint(array);
 ArrayReversePrint(array);
 
-foreach(int item in array)
+int p = 5;
+double x = 3.5;
+double y = Power(p, x);
+
+int n = 20;
+int m = 30;
+Console.WriteLine($"n = {n}, m = {m}");
+Swap(ref n, ref m);
+Console.WriteLine($"n = {n}, m = {m}");
+
+int f;
+Func(out f);
+
+WayType wt = WayType.Down;
+
+
+foreach (int item in array)
 {
     Console.Write($"{item} ");
 }
@@ -37,4 +53,37 @@ void ArrayRandomInit(int[] array)
     Random random = new Random();
     for(int i = 0; i < array.Length; i++)
         array[i] = random.Next(0, 100);
+}
+
+double Power(int level, double x)
+{
+    if (level == 0) return 1;
+    return Power(level - 1, x) * x;
+}
+
+void Swap(ref int a, ref int b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void InFunc(in int val)
+//void InFunc(ref readonly int val)
+{
+    //val = 100; // error
+    Console.WriteLine($"Value = {val}");
+}
+
+void Func(out int a)
+{
+    a = 100;
+}
+
+enum WayType
+{
+    Up = 10,
+    Down = 20,
+    Left,
+    Right
 }
